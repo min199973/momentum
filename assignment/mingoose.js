@@ -1,7 +1,14 @@
 const body = document.querySelector("body");
 
-window.onresize = function (event) {
-  const innerWidth = window.innerWidth;
-  if (body.classList.contains(innerWidth)) {
-    h1.classList.remove(innerWidth);
-};
+function handlResize() {
+  let innerWidth = window.innerWidth;
+  if (innerWidth <= "600") {
+    body.style.background = "blue";
+  } else if (600 < innerWidth && innerWidth <= "800") {
+    body.style.background = "purple";
+  } else if (800 < innerWidth && innerWidth <= "1000") {
+    body.style.background = "yellow";
+  }
+}
+
+window.addEventListener("resize", handlResize);
