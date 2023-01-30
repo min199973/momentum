@@ -11,8 +11,8 @@ function onPlayButton(event) {
   event.preventDefault();
   chose_num.classList.remove(HIDDEN_CLASSNAME);
   const number = input_num.value;
-  const max1 = max.value;
-  const random_number = parseInt(Math.round(Math.random() * max1));
+  const max1 = parseInt(max.value) + 1;
+  const random_number = Math.ceil(Math.random() * max1 - 1);
   chose_num.innerText = `You chose ${number}, the machine chose ${random_number}`;
   if (number == random_number) {
     win_or_lose.classList.remove(HIDDEN_CLASSNAME);
