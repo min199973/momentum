@@ -1,26 +1,26 @@
-const random_number = document.querySelector("#random_number");
-const chose_num = document.querySelector("#chose_num");
-const input_num = document.querySelector("#input_num");
-const max = document.querySelector("#max");
-const win_or_lose = document.querySelector("#win_or_lose");
+const leftDate = document.querySelector("#left-date");
 
-const HIDDEN_CLASSNAME = "hidden";
-const WOR = "win_or_lose";
+function getDiffDate() {
+  const masTime = new Date("2023-12-25T00:00:00");
+  const todayTime = new Date();
 
-function onPlayButton(event) {
-  event.preventDefault();
-  chose_num.classList.remove(HIDDEN_CLASSNAME);
-  const number = input_num.value;
-  const max1 = parseInt(max.value) + 1;
-  const random_number = Math.ceil(Math.random() * max1 - 1);
-  chose_num.innerText = `You chose ${number}, the machine chose ${random_number}`;
-  if (number == random_number) {
-    win_or_lose.classList.remove(HIDDEN_CLASSNAME);
-    win_or_lose.innerText = "You won!";
-  } else {
-    win_or_lose.classList.remove(HIDDEN_CLASSNAME);
-    win_or_lose.innerText = "You Lost!";
-  }
+  const diffTime = masTime - todayTime;
+
+  const diffDay = String(Math.floor(diffTime / (1000 * 60 * 60 * 24))).padStart(
+    2,
+    "0"
+  );
+  const diffHour = String(
+    Math.floor((diffTime / (1000 * 60 * 60)) % 24)
+  ).padStart(2, "0");
+  const diffMin = String(Math.floor((diffTime / (1000 * 60)) % 24)).padStart(
+    2,
+    "0"
+  );
+  const diffSec = String(Math.floor((diffTime / 1000) % 60)).padStart(2, "0");
+
+  leftDate.innerText = `${diffDay}d ${diffHour}h ${diffMin}m ${diffSec}s`;
 }
 
-random_number.addEventListener("submit", onPlayButton);
+getDiffDate();
+setInterval(getDiffDate, 1000);
