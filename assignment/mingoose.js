@@ -1,26 +1,9 @@
-const random_number = document.querySelector("#random_number");
-const chose_num = document.querySelector("#chose_num");
-const input_num = document.querySelector("#input_num");
-const max = document.querySelector("#max");
-const win_or_lose = document.querySelector("#win_or_lose");
+const left_date = document.querySelector("#left-date");
 
-const HIDDEN_CLASSNAME = "hidden";
-const WOR = "win_or_lose";
-
-function onPlayButton(event) {
-  event.preventDefault();
-  chose_num.classList.remove(HIDDEN_CLASSNAME);
-  const number = input_num.value;
-  const max1 = parseInt(max.value) + 1;
-  const random_number = Math.ceil(Math.random() * max1 - 1);
-  chose_num.innerText = `You chose ${number}, the machine chose ${random_number}`;
-  if (number == random_number) {
-    win_or_lose.classList.remove(HIDDEN_CLASSNAME);
-    win_or_lose.innerText = "You won!";
-  } else {
-    win_or_lose.classList.remove(HIDDEN_CLASSNAME);
-    win_or_lose.innerText = "You Lost!";
-  }
+function getClock() {
+  const masDate = new Date("2023-12-25");
+  const today = new Date();
+  const year = today.getFullYear();
+  console.log(year);
+  const diff = masDate - today;
 }
-
-random_number.addEventListener("submit", onPlayButton);
