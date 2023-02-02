@@ -1,7 +1,7 @@
 const leftDate = document.querySelector("#left-date");
 
 function getDiffDate() {
-  const masTime = new Date("2023-12-25T00:00:00");
+  const masTime = new Date(`${new Date().getFullYear()}-12-25:00:00:00+0900`);
   const todayTime = new Date();
 
   const diffTime = masTime - todayTime;
